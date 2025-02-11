@@ -3,12 +3,11 @@
  * @return {string}
  */
 var removeDuplicates = function(s) {
-  var stack=[];
-  for( var i=0;i<s.length;i++){
-    if(stack[stack.length-1]===s[i]){
-        stack.pop();
-    }else{
-        stack.push(s[i]);
+    for(var i=1; i<s.length; i++){
+        if(s[i] === s[i-1]){
+            s = s.slice(0, i-1) + s.slice(i+1);
+            i-=2;
+        }
     }
-  }   return stack.join('');
+    return s;
 };
